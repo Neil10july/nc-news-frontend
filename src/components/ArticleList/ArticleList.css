@@ -1,0 +1,12 @@
+#articlesList {
+  list-style: none;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.title:hover {
+  color: blue;
+  cursor: pointer;
+}
