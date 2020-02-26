@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import * as api from "../../../api/api";
+import * as api from "../../api/api";
 
 class ViewArticle extends Component {
   state = { article: "" };

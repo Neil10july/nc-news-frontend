@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { ArticleList, api, SortBy } from "../../../routes/component.routes";
+import { ArticleList, api, SortBy } from "../../routes/component.routes";
 
 class ViewTopic extends Component {
   state = { path: `/articles?topic=${this.props.topic}`, articles: [] };
