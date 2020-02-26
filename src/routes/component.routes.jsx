@@ -10,6 +10,7 @@ import ViewArticle from "../components/Pages/ViewArticle/ViewArticle";
 import ViewTopic from "../components/Pages/ViewTopic/ViewTopic";
 import ArticleList from "../components/ArticleList/ArticleList";
 import * as api from "../api/api";
+import SortBy from "../components/SortBy/SortBy";
 
 export {
   Header,
@@ -23,5 +24,6 @@ export {
   ViewArticle,
   ViewTopic,
   ArticleList,
-  api
+  api,
+  SortBy
 };
