@@ -8,7 +8,7 @@ class Articles extends Component {
     return (
       <div>
         <h1>ARTICLES</h1>
-        <SortBy generateQuery={this.generateQuery} />
+        <SortBy generateQuery={this.generateQuery} content={"articles"} />
         <ArticleList articles={this.state.articles} />
       </div>
     );

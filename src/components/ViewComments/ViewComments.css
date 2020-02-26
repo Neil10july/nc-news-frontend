@@ -1,0 +1,14 @@
+#commentsList {
+  list-style: none;
+}
+
+.comment {
+  position: relative;
+  border: 2px groove;
+  border-radius: 3px;
+  border-color: grey;
+}
+
+.commentContent {
+  margin: 0.5em;
+}

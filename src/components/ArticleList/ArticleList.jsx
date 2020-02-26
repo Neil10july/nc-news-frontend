@@ -10,13 +10,13 @@ const ArticleList = props => {
         {articles.map(article => {
           return (
             <div key={article.article_id}>
-              <li className="title">
-                <Link to={`/articles/${article.article_id}`}>
+              <li>
+                <Link id="title" to={`/articles/${article.article_id}`}>
                   {article.title}
                 </Link>
               </li>
               <li>(Topic) {article.topic}</li>
-              <li>(Written By) {article.author}</li>
+              <li>(Author) {article.author}</li>
               <li>{article.comment_count} comments</li>
               <br></br>
             </div>

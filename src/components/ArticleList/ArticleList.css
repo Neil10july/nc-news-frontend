@@ -2,11 +2,12 @@
   list-style: none;
 }
 
-.title {
+#title {
+  color: black;
   font-weight: bold;
 }
 
-.title:hover {
+#title:hover {
   color: blue;
   cursor: pointer;
 }

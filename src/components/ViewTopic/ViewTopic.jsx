@@ -8,7 +8,7 @@ class ViewTopic extends Component {
     return (
       <div>
         <h2>{this.props.topic.toUpperCase()}</h2>
-        <SortBy generateQuery={this.generateQuery} />
+        <SortBy generateQuery={this.generateQuery} content={"articles"} />
         <ArticleList articles={this.state.articles} />
       </div>
     );

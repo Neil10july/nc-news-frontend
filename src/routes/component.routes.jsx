@@ -7,10 +7,14 @@ import Search from "../components/Search/Search";
 import NavBar from "../components/Layout/NavBar/NavBar";
 import Home from "../components/Pages/Home/Home";
 import ViewArticle from "../components/ViewArticle/ViewArticle";
+import ViewComments from "../components//ViewComments/ViewComments";
 import ViewTopic from "../components/ViewTopic/ViewTopic";
 import ArticleList from "../components/ArticleList/ArticleList";
 import * as api from "../api/api";
 import SortBy from "../components/SortBy/SortBy";
+import Login from "../components/Login/Login";
+import Toggle from "../components/Toggle/Toggle";
+import AddComment from "../components/AddComment/AddComment";
 
 export {
   Header,
@@ -22,8 +26,12 @@ export {
   NavBar,
   Home,
   ViewArticle,
+  ViewComments,
   ViewTopic,
   ArticleList,
   api,
-  SortBy
+  SortBy,
+  Login,
+  Toggle,
+  AddComment
 };
