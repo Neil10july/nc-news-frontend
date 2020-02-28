@@ -23,6 +23,8 @@ const postComment = (user, id, comment) => {
   });
 };
 
-const removeComment = path => {};
+const removeContent = (content, id) => {
+  return axios.delete(`${url}/${content}s/${id}`);
+};
 
-export { url, fetchContent, incrementVote, postComment, removeComment };
+export { url, fetchContent, incrementVote, postComment, removeContent };

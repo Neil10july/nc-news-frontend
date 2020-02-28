@@ -4,7 +4,8 @@ import {
   api,
   SortBy,
   AddComment,
-  UpdateVotes
+  UpdateVotes,
+  DeleteContent
 } from "../../routes/component.routes";
 import { Link } from "@reach/router";
 
@@ -12,8 +13,7 @@ class ViewComments extends Component {
   state = {
     path: `/articles/${this.props.article_id}/comments`,
     comments: [],
-    voted: {},
-    btnClicked: ""
+    voted: {}
   };
 
   render() {
@@ -51,9 +51,16 @@ class ViewComments extends Component {
                     }}
                   />
                   <br />
-                  {user === comment.author && <button>delete comment</button>}
+                  {user === comment.author && (
+                    <DeleteContent
+                      args={{
+                        content: "comment",
+                        id: comment_id,
+                        preRenderDelete: this.preRenderDelete
+                      }}
+                    />
+                  )}
                 </div>
-                <br />
               </div>
             );
           })}
@@ -102,6 +109,17 @@ class ViewComments extends Component {
         }),
         voted: { ...voted, [id]: newVoteState }
       };
+      return newState;
+    });
+  };
+
+  preRenderDelete = id => {
+    this.setState(currentState => {
+      const { comments } = currentState;
+      const newState = {
+        comments: comments.filter(comment => comment.comment_id !== id)
+      };
+
       return newState;
     });
   };

@@ -7,7 +7,8 @@ import {
   ViewComments,
   api,
   ErrorHandler,
-  UpdateVotes
+  UpdateVotes,
+  DeleteContent
 } from "../../routes/component.routes";
 
 class ViewArticle extends Component {
@@ -27,7 +28,7 @@ class ViewArticle extends Component {
         <p>{body}</p>
         <ul id="viewArticleList">
           <li>
-            <Link to="/">{author}</Link>
+            <Link to={`/users/${author}`}>{author}</Link>
           </li>
           <br />
           <UpdateVotes
@@ -41,6 +42,15 @@ class ViewArticle extends Component {
             }}
           />
         </ul>
+        {user === article.author && (
+          <DeleteContent
+            args={{
+              content: "article",
+              id: article_id,
+              preRenderDelete: this.preRenderDelete
+            }}
+          />
+        )}
         <br />
         <Toggle text={"View comments"}>
           <ViewComments
@@ -81,6 +91,10 @@ class ViewArticle extends Component {
       };
       return newState;
     });
+  };
+
+  preRenderDelete = () => {
+    this.setState({ err: "Article deleted" });
   };
 }
 

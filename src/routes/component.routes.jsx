@@ -1,11 +1,11 @@
 import Header from "../components/Layout/Header";
 import Footer from "../components/Layout/Footer";
-import Articles from "../components/Pages/Articles/Articles";
-import Topics from "../components/Pages/Topics/Topics";
-import Support from "../components/Pages/Support/Support";
+import Articles from "../components/_Pages/Articles/Articles";
+import Topics from "../components/_Pages/Topics/Topics";
+import Support from "../components/_Pages/Support/Support";
 import Search from "../components/Search/Search";
 import NavBar from "../components/Layout/NavBar/NavBar";
-import Home from "../components/Pages/Home/Home";
+import Home from "../components/_Pages/Home/Home";
 import ViewArticle from "../components/ViewArticle/ViewArticle";
 import ViewComments from "../components/ViewComments/ViewComments";
 import ViewTopic from "../components/ViewTopic/ViewTopic";
@@ -17,6 +17,7 @@ import Toggle from "../components/Toggle/Toggle";
 import AddComment from "../components/AddComment/AddComment";
 import ErrorHandler from "../components/ErrorHandler/ErrorHandler";
 import UpdateVotes from "../components/UpdateVotes/UpdateVotes";
+import DeleteContent from "../components/DeleteContent/DeleteContent";
 
 export {
   Header,
@@ -37,5 +38,6 @@ export {
   Toggle,
   AddComment,
   ErrorHandler,
-  UpdateVotes
+  UpdateVotes,
+  DeleteContent
 };
