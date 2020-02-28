@@ -6,32 +6,49 @@ import {
   Toggle,
   ViewComments,
   api,
-  AddComment
+  ErrorHandler,
+  UpdateVotes
 } from "../../routes/component.routes";
 
 class ViewArticle extends Component {
-  state = { article: "" };
+  state = { article: "", err: null, currentVote: null };
+
   render() {
-    const { article } = this.state;
-    return (
+    const { article, err, currentVote } = this.state;
+    const { user, loggedIn, article_id } = this.props;
+    const { votes, title, author, created_at, body } = article;
+
+    return err ? (
+      <ErrorHandler msg={err} />
+    ) : (
       <div>
-        <h1>{article.title}</h1>
-        <h4>{Date(article.created_at)}</h4>
-        <p>{article.body}</p>
+        <h1>{title}</h1>
+        <h4>{created_at}</h4>
+        <p>{body}</p>
         <ul id="viewArticleList">
           <li>
-            <Link to="/">{article.author}</Link>
+            <Link to="/">{author}</Link>
           </li>
-          <br></br>
-          <li>
-            <button>+</button> {article.votes} <button>-</button>
-          </li>
+          <br />
+          <UpdateVotes
+            args={{
+              content: "article",
+              id: article_id,
+              votes,
+              preRenderVote: this.preRenderVote,
+              currentVote,
+              loggedIn
+            }}
+          />
         </ul>
-        <br></br>
+        <br />
         <Toggle text={"View comments"}>
-          <ViewComments article_id={this.props.article_id} />
+          <ViewComments
+            article_id={article_id}
+            user={user}
+            loggedIn={loggedIn}
+          />
         </Toggle>
-        <AddComment />
       </div>
     );
   }
@@ -42,11 +59,29 @@ class ViewArticle extends Component {
 
   fetchArticle() {
     const id = this.props.article_id;
-    axios.get(`${api.url}/articles/${id}`).then(res => {
-      const { article } = res.data;
-      this.setState({ article });
-    });
+    axios
+      .get(`${api.url}/articles/${id}`)
+      .then(res => {
+        const { article } = res.data;
+        this.setState({ article });
+      })
+      .catch(err => {
+        const { msg } = err.response.data;
+        const { status } = err.response;
+        this.setState({ err: `${status} - ${msg}` });
+      });
   }
+
+  preRenderVote = (value, newVoteState) => {
+    this.setState(currentState => {
+      const { article } = currentState;
+      const newState = {
+        article: { ...article, votes: (article.votes += value) },
+        currentVote: newVoteState
+      };
+      return newState;
+    });
+  };
 }
 
 export default ViewArticle;

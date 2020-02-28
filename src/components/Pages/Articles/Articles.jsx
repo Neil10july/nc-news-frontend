@@ -1,11 +1,21 @@
 import React, { Component } from "react";
-import axios from "axios";
-import { ArticleList, api, SortBy } from "../../../routes/component.routes";
+import {
+  ArticleList,
+  api,
+  SortBy,
+  ErrorHandler
+} from "../../../routes/component.routes";
 
 class Articles extends Component {
-  state = { path: "/articles", articles: [] };
+  state = { path: "/articles", articles: [], err: null };
+
   render() {
-    return (
+    const { err } = this.state;
+    return err ? (
+      <div>
+        <ErrorHandler msg={err} />
+      </div>
+    ) : (
       <div>
         <h1>ARTICLES</h1>
         <SortBy generateQuery={this.generateQuery} content={"articles"} />
@@ -25,11 +35,17 @@ class Articles extends Component {
   }
 
   fetchArticles() {
-    const url = api.url + this.state.path;
-    axios.get(url).then(res => {
-      const { articles } = res.data;
-      this.setState({ articles });
-    });
+    const { path } = this.state;
+    api
+      .fetchContent(path)
+      .then(({ articles }) => {
+        this.setState({ articles });
+      })
+      .catch(err => {
+        const { msg } = err.response.data;
+        const { status } = err.response;
+        this.setState({ err: `${status} - ${msg}` });
+      });
   }
 
   generateQuery = event => {

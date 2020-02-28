@@ -11,7 +11,8 @@ import {
   Articles,
   ViewArticle,
   Home,
-  Login
+  Login,
+  ErrorHandler
 } from "../routes/component.routes";
 
 class App extends Component {
@@ -22,8 +23,8 @@ class App extends Component {
     return (
       <div>
         <header>
-          <Header user={user} loggedIn={loggedIn} />
-          <NavBar />
+          <Header />
+          <NavBar user={user} loggedIn={loggedIn} />
         </header>
         <Router>
           <Home path="/" />
@@ -37,6 +38,7 @@ class App extends Component {
           />
           <TestPage path="/test" />
           <Login path="/login" logIn={this.logIn} />
+          <ErrorHandler default msg={"404 Page Not Found"} />
         </Router>
         <Footer />
       </div>

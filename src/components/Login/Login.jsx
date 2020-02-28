@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Login.css";
 
 class Login extends Component {
-  state = { users: { admin: "admin", neil: "pass" } };
+  state = { users: { tickle122: "pass" } };
 
   render() {
     return (
@@ -14,7 +14,7 @@ class Login extends Component {
               type="text"
               inputfor="user"
               onChange={this.handleChange}
-              placeholder="username"
+              value="tickle122"
             ></input>
           </label>
           <br></br>
@@ -23,7 +23,7 @@ class Login extends Component {
               className="loginInput"
               type="text"
               onChange={this.handleChange}
-              placeholder="password"
+              value="pass"
             ></input>
           </label>
           <button onClick={this.validateUser}>Log in</button>
@@ -32,17 +32,16 @@ class Login extends Component {
     );
   }
 
-  handleChange = event => {
-    const { placeholder, value } = event.target;
-    this.setState({ [placeholder]: value });
-  };
+  handleChange = event => {};
 
   validateUser = event => {
     event.preventDefault();
-    const { users, username, password } = this.state;
-    if (users[username] && users[username] === password) {
-      this.props.logIn(username);
-    }
+    this.setState({ username: "tickle122", password: "pass" }, () => {
+      const { users, username, password } = this.state;
+      if (users[username] && users[username] === password) {
+        this.props.logIn(username);
+      }
+    });
   };
 }
 

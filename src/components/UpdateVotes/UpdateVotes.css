@@ -1,0 +1,9 @@
+#upvote {
+  background-color: rgba(0, 0, 255, 0.87);
+  color: white;
+}
+
+#downvote {
+  background-color: rgb(255, 51, 0);
+  color: white;
+}

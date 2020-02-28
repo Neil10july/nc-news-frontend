@@ -1,31 +1,59 @@
 import React, { Component } from "react";
-import axios from "axios";
 import "./ViewComments.css";
-import { api, SortBy } from "../../routes/component.routes";
+import {
+  api,
+  SortBy,
+  AddComment,
+  UpdateVotes
+} from "../../routes/component.routes";
 import { Link } from "@reach/router";
 
 class ViewComments extends Component {
-  state = { path: `/articles/${this.props.article_id}/comments`, comments: [] };
+  state = {
+    path: `/articles/${this.props.article_id}/comments`,
+    comments: [],
+    voted: {},
+    btnClicked: ""
+  };
+
   render() {
     const { comments } = this.state;
+    const { user, loggedIn, article_id } = this.props;
+
     return (
       <div>
         <br></br>
+        <AddComment
+          user={user}
+          loggedIn={loggedIn}
+          id={article_id}
+          preRenderComment={this.preRenderComment}
+        />
         <SortBy generateQuery={this.generateQuery} content={"comments"} />
         <ul id="commentsList">
           {comments.map(comment => {
+            const { comment_id, votes, author, body } = comment;
             return (
-              <div key={comment.comment_id}>
+              <div key={comment_id}>
                 <div className="comment">
                   <li className="commentContent">
-                    <Link to="/">{comment.author}</Link>
+                    <Link to="/">{author}</Link>
                   </li>
-                  <li className="commentContent">{comment.body}</li>
-                  <li className="commentContent">
-                    <button>+</button> {comment.votes} <button>-</button>
-                  </li>
+                  <li className="commentContent">{body}</li>
+                  <UpdateVotes
+                    args={{
+                      content: "comment",
+                      id: comment_id,
+                      votes,
+                      preRenderVote: this.preRenderVote,
+                      currentVote: this.state.voted[comment_id],
+                      loggedIn
+                    }}
+                  />
+                  <br />
+                  {user === comment.author && <button>delete comment</button>}
                 </div>
-                <br></br>
+                <br />
               </div>
             );
           })}
@@ -45,12 +73,40 @@ class ViewComments extends Component {
   }
 
   fetchComments = () => {
-    const url = api.url + this.state.path;
-    axios.get(url).then(res => {
-      const { comments } = res.data;
+    const { path } = this.state;
+    api.fetchContent(path).then(({ comments }) => {
       this.setState({ comments });
     });
   };
+
+  preRenderComment = (author, body) => {
+    const newComment = {
+      author: author,
+      body: body,
+      votes: 0,
+      comment_id: "temp"
+    };
+    this.setState(currentState => {
+      return { comments: [newComment, ...currentState.comments] };
+    });
+  };
+
+  preRenderVote = (value, newVoteState, id) => {
+    this.setState(currentState => {
+      const { comments, voted } = currentState;
+      const newState = {
+        comments: comments.map(comment => {
+          if (id === comment.comment_id)
+            return { ...comment, votes: (comment.votes += value) };
+          else return comment;
+        }),
+        voted: { ...voted, [id]: newVoteState }
+      };
+      return newState;
+    });
+  };
+
+  setPath = path => {};
 
   generateQuery = event => {
     event.preventDefault();

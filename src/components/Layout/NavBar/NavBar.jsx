@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "@reach/router";
 import "./NavBar.css";
 
-const NavBar = () => {
+const NavBar = props => {
+  const { user, loggedIn } = props;
   return (
     <nav className="navbar">
       <Link to="/">
@@ -17,6 +18,13 @@ const NavBar = () => {
       <Link to="/test">
         <button className="navButton">Test</button>
       </Link>
+      {loggedIn ? (
+        <h2>logged in as {user}</h2>
+      ) : (
+        <Link to="/login">
+          <button>Login</button>
+        </Link>
+      )}
     </nav>
   );
 };

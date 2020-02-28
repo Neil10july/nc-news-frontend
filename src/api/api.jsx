@@ -2,25 +2,27 @@ import axios from "axios";
 
 const url = "https://nc-news-np.herokuapp.com/api";
 
-const fetchArticles = query => {
-  axios.get(url + query).then(res => {
+const fetchContent = query => {
+  return axios.get(url + query).then(res => {
     return res.data;
   });
 };
 
-const fetchTopics = () => {};
+const incrementVote = (content, id, value) => {
+  if (content === "comment") {
+    return axios.patch(`${url}/comments/${id}`, { inc_votes: value });
+  } else if (content === "article") {
+    return axios.patch(`${url}/articles/${id}`, { inc_votes: value });
+  }
+};
 
-const incrementVote = (path, body) => {};
-
-const addComment = (path, body) => {};
+const postComment = (user, id, comment) => {
+  return axios.post(`${url}/articles/${id}/comments`, {
+    username: user,
+    body: comment
+  });
+};
 
 const removeComment = path => {};
 
-export {
-  url,
-  fetchArticles,
-  fetchTopics,
-  incrementVote,
-  addComment,
-  removeComment
-};
+export { url, fetchContent, incrementVote, postComment, removeComment };

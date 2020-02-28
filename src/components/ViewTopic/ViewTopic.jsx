@@ -1,11 +1,23 @@
 import React, { Component } from "react";
-import axios from "axios";
-import { ArticleList, api, SortBy } from "../../routes/component.routes";
+import {
+  ArticleList,
+  api,
+  SortBy,
+  ErrorHandler
+} from "../../routes/component.routes";
 
 class ViewTopic extends Component {
-  state = { path: `/articles?topic=${this.props.topic}`, articles: [] };
+  state = {
+    path: ``,
+    articles: [],
+    err: null
+  };
+
   render() {
-    return (
+    const { err } = this.state;
+    return err ? (
+      <ErrorHandler msg={err} />
+    ) : (
       <div>
         <h2>{this.props.topic.toUpperCase()}</h2>
         <SortBy generateQuery={this.generateQuery} content={"articles"} />
@@ -25,11 +37,21 @@ class ViewTopic extends Component {
   }
 
   fetchArticles() {
-    const url = api.url + this.state.path;
-    axios.get(url).then(res => {
-      const { articles } = res.data;
-      this.setState({ articles });
-    });
+    let path = this.state.path;
+    if (path === "") {
+      path = `/articles?topic=${this.props.topic}`;
+    }
+
+    api
+      .fetchContent(path)
+      .then(({ articles }) => {
+        this.setState({ articles });
+      })
+      .catch(err => {
+        const { msg } = err.response.data;
+        const { status } = err.response;
+        this.setState({ err: `${status} - ${msg}` });
+      });
   }
 
   generateQuery = event => {
