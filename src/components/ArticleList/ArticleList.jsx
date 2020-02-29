@@ -3,7 +3,8 @@ import "./ArticleList.css";
 import { Link } from "@reach/router";
 
 const ArticleList = props => {
-  const { articles } = props;
+  const { articles, updateCurrentPath } = props;
+
   return (
     <div>
       <ul id="articlesList">
@@ -11,7 +12,13 @@ const ArticleList = props => {
           return (
             <div key={article.article_id}>
               <li>
-                <Link id="title" to={`/articles/${article.article_id}`}>
+                <Link
+                  id="title"
+                  onClick={() => {
+                    updateCurrentPath(`/articles/${article.article_id}`);
+                  }}
+                  to={`/articles/${article.article_id}`}
+                >
                   {article.title}
                 </Link>
               </li>

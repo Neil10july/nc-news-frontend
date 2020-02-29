@@ -6,6 +6,7 @@ class AddComment extends Component {
   state = { comment: "" };
 
   render() {
+    const { comment } = this.state;
     return (
       <div>
         <form>
@@ -16,9 +17,13 @@ class AddComment extends Component {
             placeholder="Add a comment"
             onChange={this.handleChange}
           ></textarea>
-          <button id="commentButton" onClick={this.submitComment}>
-            COMMENT
-          </button>
+          {comment.length > 3 ? (
+            <button id="commentButton" onClick={this.submitComment}>
+              COMMENT
+            </button>
+          ) : (
+            <p>comments must have a minimum of 4 characters!</p>
+          )}
         </form>
       </div>
     );

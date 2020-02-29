@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import "./ViewArticle.css";
 import { Link } from "@reach/router";
 import {
@@ -68,11 +67,10 @@ class ViewArticle extends Component {
   }
 
   fetchArticle() {
-    const id = this.props.article_id;
-    axios
-      .get(`${api.url}/articles/${id}`)
-      .then(res => {
-        const { article } = res.data;
+    const { article_id } = this.props;
+    api
+      .fetchContent(`/articles/${article_id}`)
+      .then(({ article }) => {
         this.setState({ article });
       })
       .catch(err => {

@@ -1,10 +1,13 @@
 import React from "react";
+import NavBar from "./NavBar/NavBar";
 
-const Header = () => {
+const Header = props => {
+  const { user, loggedIn } = props;
   return (
-    <header>
+    <div>
       <h1>NC_News</h1>
-    </header>
+      <NavBar user={user} loggedIn={loggedIn} />
+    </div>
   );
 };
 

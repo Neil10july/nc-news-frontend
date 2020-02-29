@@ -8,7 +8,10 @@ class Home extends Component {
     return (
       <div>
         <h2>Most Discussed</h2>
-        <ArticleList articles={this.state.articles} />
+        <ArticleList
+          articles={this.state.articles}
+          updateCurrentPath={this.props.updateCurrentPath}
+        />
       </div>
     );
   }

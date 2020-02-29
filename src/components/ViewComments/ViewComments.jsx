@@ -29,7 +29,11 @@ class ViewComments extends Component {
           id={article_id}
           preRenderComment={this.preRenderComment}
         />
-        <SortBy generateQuery={this.generateQuery} content={"comments"} />
+        <SortBy
+          id={this.props.article_id}
+          setPath={this.setPath}
+          content={"comments"}
+        />
         <ul id="commentsList">
           {comments.map(comment => {
             const { comment_id, votes, author, body } = comment;
@@ -124,22 +128,8 @@ class ViewComments extends Component {
     });
   };
 
-  setPath = path => {};
-
-  generateQuery = event => {
-    event.preventDefault();
-    const id = this.props.article_id;
-    const query = event.target.value;
-    const queryRef = {
-      Newest: { sort_by: "created_at", order: "desc" },
-      Oldest: { sort_by: "created_at", order: "asc" },
-      Highest_rated: { sort_by: "votes", order: "desc" },
-      Lowest_rated: { sort_by: "votes", order: "asc" }
-    };
-    const { sort_by, order } = queryRef[query];
-    this.setState({
-      path: `/articles/${id}/comments?sort_by=${sort_by}&order=${order}`
-    });
+  setPath = path => {
+    this.setState({ path });
   };
 }
 

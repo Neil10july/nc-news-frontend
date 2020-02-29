@@ -18,8 +18,11 @@ class Articles extends Component {
     ) : (
       <div>
         <h1>ARTICLES</h1>
-        <SortBy generateQuery={this.generateQuery} content={"articles"} />
-        <ArticleList articles={this.state.articles} />
+        <SortBy setPath={this.setPath} content={"articles"} />
+        <ArticleList
+          articles={this.state.articles}
+          updateCurrentPath={this.props.updateCurrentPath}
+        />
       </div>
     );
   }
@@ -48,19 +51,8 @@ class Articles extends Component {
       });
   }
 
-  generateQuery = event => {
-    event.preventDefault();
-    const query = event.target.value;
-    const queryRef = {
-      Newest: { sort_by: "created_at", order: "desc" },
-      Oldest: { sort_by: "created_at", order: "asc" },
-      Highest_rated: { sort_by: "votes", order: "desc" },
-      Lowest_rated: { sort_by: "votes", order: "asc" },
-      Most_comments: { sort_by: "comment_count", order: "desc" },
-      Least_comments: { sort_by: "comment_count", order: "asc" }
-    };
-    const { sort_by, order } = queryRef[query];
-    this.setState({ path: `/articles?sort_by=${sort_by}&order=${order}` });
+  setPath = path => {
+    this.setState({ path });
   };
 }
 

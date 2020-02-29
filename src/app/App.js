@@ -5,7 +5,6 @@ import TestPage from "../TestPage";
 import {
   Header,
   Footer,
-  NavBar,
   Topics,
   ViewTopic,
   Articles,
@@ -16,21 +15,26 @@ import {
 } from "../routes/component.routes";
 
 class App extends Component {
-  state = { user: "", loggedIn: false };
+  state = { currentPath: "/", user: "", loggedIn: false };
 
   render() {
     const { user, loggedIn } = this.state;
     return (
       <div>
         <header>
-          <Header />
-          <NavBar user={user} loggedIn={loggedIn} />
+          <Header user={user} loggedIn={loggedIn} />
         </header>
         <Router>
-          <Home path="/" />
+          <Home path="/" updateCurrentPath={this.updateCurrentPath} />
           <Topics path="/topics" />
-          <ViewTopic path="/topics/:topic" />
-          <Articles path="/articles" />
+          <ViewTopic
+            path="/topics/:topic"
+            updateCurrentPath={this.updateCurrentPath}
+          />
+          <Articles
+            path="/articles"
+            updateCurrentPath={this.updateCurrentPath}
+          />
           <ViewArticle
             path="/articles/:article_id"
             user={user}
@@ -47,8 +51,12 @@ class App extends Component {
 
   logIn = username => {
     this.setState({ user: username, loggedIn: true }, () => {
-      navigate("/");
+      navigate(this.state.currentPath);
     });
+  };
+
+  updateCurrentPath = path => {
+    this.setState({ currentPath: path });
   };
 }
 

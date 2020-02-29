@@ -20,8 +20,11 @@ class ViewTopic extends Component {
     ) : (
       <div>
         <h2>{this.props.topic.toUpperCase()}</h2>
-        <SortBy generateQuery={this.generateQuery} content={"articles"} />
-        <ArticleList articles={this.state.articles} />
+        <SortBy setPath={this.setPath} content={"articles"} />
+        <ArticleList
+          articles={this.state.articles}
+          updateCurrentPath={this.props.updateCurrentPath}
+        />
       </div>
     );
   }
@@ -54,22 +57,9 @@ class ViewTopic extends Component {
       });
   }
 
-  generateQuery = event => {
-    event.preventDefault();
+  setPath = path => {
     const { topic } = this.props;
-    const query = event.target.value;
-    const queryRef = {
-      Newest: { sort_by: "created_at", order: "desc" },
-      Oldest: { sort_by: "created_at", order: "asc" },
-      Highest_rated: { sort_by: "votes", order: "desc" },
-      Lowest_rated: { sort_by: "votes", order: "asc" },
-      Most_comments: { sort_by: "comment_count", order: "desc" },
-      Least_comments: { sort_by: "comment_count", order: "asc" }
-    };
-    const { sort_by, order } = queryRef[query];
-    this.setState({
-      path: `/articles?topic=${topic}&sort_by=${sort_by}&order=${order}`
-    });
+    this.setState({ path: `${path}&topic=${topic}` });
   };
 }
 
