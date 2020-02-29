@@ -15,9 +15,6 @@ const NavBar = props => {
       <Link to="/articles">
         <button className="navButton"> Articles</button>
       </Link>
-      <Link to="/test">
-        <button className="navButton">Test</button>
-      </Link>
       {loggedIn ? (
         <h2>logged in as {user}</h2>
       ) : (

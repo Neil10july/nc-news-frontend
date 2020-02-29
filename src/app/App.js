@@ -39,8 +39,8 @@ class App extends Component {
             path="/articles/:article_id"
             user={user}
             loggedIn={loggedIn}
+            updateCurrentPath={this.updateCurrentPath}
           />
-          <TestPage path="/test" />
           <Login path="/login" logIn={this.logIn} />
           <ErrorHandler default msg={"404 Page Not Found"} />
         </Router>

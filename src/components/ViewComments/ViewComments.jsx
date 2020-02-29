@@ -90,6 +90,10 @@ class ViewComments extends Component {
     });
   };
 
+  setPath = path => {
+    this.setState({ path });
+  };
+
   preRenderComment = (author, body) => {
     const newComment = {
       author: author,
@@ -126,10 +130,6 @@ class ViewComments extends Component {
 
       return newState;
     });
-  };
-
-  setPath = path => {
-    this.setState({ path });
   };
 }
 

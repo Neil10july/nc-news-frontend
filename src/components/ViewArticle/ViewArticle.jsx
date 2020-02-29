@@ -64,6 +64,7 @@ class ViewArticle extends Component {
 
   componentDidMount() {
     this.fetchArticle();
+    this.props.updateCurrentPath(`/articles/${this.props.article_id}`);
   }
 
   fetchArticle() {
