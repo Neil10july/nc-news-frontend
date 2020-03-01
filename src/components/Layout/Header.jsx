@@ -1,5 +1,6 @@
 import React from "react";
-import NavBar from "./NavBar/NavBar";
+import NavBar from "./NavBar";
+import "./Layout.css";
 
 const Header = props => {
   const { user, loggedIn } = props;

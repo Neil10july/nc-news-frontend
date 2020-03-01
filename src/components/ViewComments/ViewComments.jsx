@@ -13,14 +13,17 @@ class ViewComments extends Component {
   state = {
     path: `/articles/${this.props.article_id}/comments`,
     comments: [],
-    voted: {}
+    voted: {},
+    isLoading: true
   };
 
   render() {
     const { comments } = this.state;
     const { user, loggedIn, article_id } = this.props;
 
-    return (
+    return this.state.isLoading ? (
+      <p>Loading comments...</p>
+    ) : (
       <div>
         <br></br>
         <AddComment
@@ -86,7 +89,7 @@ class ViewComments extends Component {
   fetchComments = () => {
     const { path } = this.state;
     api.fetchContent(path).then(({ comments }) => {
-      this.setState({ comments });
+      this.setState({ comments, isLoading: false });
     });
   };
 

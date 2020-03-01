@@ -2,8 +2,10 @@ import React from "react";
 
 const SortBy = props => {
   const { id, content, setPath } = props;
+
   const generateQuery = event => {
     event.preventDefault();
+
     const query = event.target.value;
     const queryRef = {
       Newest: { sort_by: "created_at", order: "desc" },

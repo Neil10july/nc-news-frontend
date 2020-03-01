@@ -7,11 +7,13 @@ import {
 } from "../../../routes/component.routes";
 
 class Articles extends Component {
-  state = { path: "/articles", articles: [], err: null };
+  state = { path: "/articles", articles: [], err: null, isLoading: true };
 
   render() {
     const { err } = this.state;
-    return err ? (
+    return this.state.isLoading ? (
+      <p>Loading articles...</p>
+    ) : err ? (
       <div>
         <ErrorHandler msg={err} />
       </div>
@@ -42,7 +44,7 @@ class Articles extends Component {
     api
       .fetchContent(path)
       .then(({ articles }) => {
-        this.setState({ articles });
+        this.setState({ articles, isLoading: false });
       })
       .catch(err => {
         const { msg } = err.response.data;
@@ -52,7 +54,7 @@ class Articles extends Component {
   }
 
   setPath = path => {
-    this.setState({ path });
+    this.setState({ path, isLoading: true });
   };
 }
 

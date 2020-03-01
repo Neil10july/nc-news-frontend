@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Router, navigate } from "@reach/router";
 import "./App.css";
-import TestPage from "../TestPage";
 import {
   Header,
   Footer,
@@ -42,7 +41,7 @@ class App extends Component {
             updateCurrentPath={this.updateCurrentPath}
           />
           <Login path="/login" logIn={this.logIn} />
-          <ErrorHandler default msg={"404 Page Not Found"} />
+          <ErrorHandler default msg={"404 - Page Not Found"} />
         </Router>
         <Footer />
       </div>

@@ -10,12 +10,15 @@ class ViewTopic extends Component {
   state = {
     path: ``,
     articles: [],
-    err: null
+    err: null,
+    isLoading: true
   };
 
   render() {
     const { err } = this.state;
-    return err ? (
+    return this.state.isLoading ? (
+      <p>Loading articles...</p>
+    ) : err ? (
       <ErrorHandler msg={err} />
     ) : (
       <div>
@@ -48,7 +51,7 @@ class ViewTopic extends Component {
     api
       .fetchContent(path)
       .then(({ articles }) => {
-        this.setState({ articles });
+        this.setState({ articles, isLoading: false });
       })
       .catch(err => {
         const { msg } = err.response.data;

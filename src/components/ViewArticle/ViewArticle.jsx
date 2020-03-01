@@ -11,14 +11,16 @@ import {
 } from "../../routes/component.routes";
 
 class ViewArticle extends Component {
-  state = { article: "", err: null, currentVote: null };
+  state = { article: "", err: null, currentVote: null, isLoading: true };
 
   render() {
     const { article, err, currentVote } = this.state;
     const { user, loggedIn, article_id } = this.props;
     const { votes, title, author, created_at, body } = article;
 
-    return err ? (
+    return this.state.isLoading ? (
+      <p>Loading article...</p>
+    ) : err ? (
       <ErrorHandler msg={err} />
     ) : (
       <div>
@@ -72,7 +74,7 @@ class ViewArticle extends Component {
     api
       .fetchContent(`/articles/${article_id}`)
       .then(({ article }) => {
-        this.setState({ article });
+        this.setState({ article, isLoading: false });
       })
       .catch(err => {
         const { msg } = err.response.data;

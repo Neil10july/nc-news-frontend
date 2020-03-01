@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
-import "./NavBar.css";
+import "./Layout.css";
 
 const NavBar = props => {
   const { user, loggedIn } = props;
