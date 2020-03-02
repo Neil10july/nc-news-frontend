@@ -9,3 +9,47 @@
   color: red;
   font-size: 13px;
 }
+
+button {
+  background-color: transparent;
+  border: solid;
+  border-color: black;
+  border-radius: 4px;
+  margin: 5px;
+}
+
+#commentsList {
+  list-style: none;
+}
+
+.comment {
+  position: relative;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  border-radius: 3px;
+  border-color: grey;
+}
+
+.commentContent {
+  margin: 0.5em;
+}
+
+.navButton {
+  border: none;
+}
+
+.navButton:hover {
+  border-radius: 3px;
+  border: 2px solid;
+  border-color: black;
+}
+
+#signupBtn {
+  border: 1px solid;
+  background-color: blue;
+  color: white;
+}
+
+#loginBtn {
+  border: 1px solid;
+}

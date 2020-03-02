@@ -20,10 +20,14 @@ const NavBar = props => {
       ) : (
         <React.Fragment>
           <Link to="/signup">
-            <button>Sign up</button>
+            <button className="navButton" id="signupBtn">
+              Sign up
+            </button>
           </Link>
           <Link to="/login">
-            <button>Login</button>
+            <button className="navButton" id="loginBtn">
+              Login
+            </button>
           </Link>
         </React.Fragment>
       )}
