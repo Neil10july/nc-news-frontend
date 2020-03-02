@@ -1,10 +1,10 @@
 import React from "react";
 import "./Layout.css";
 
-const Header = props => {
+const Header = () => {
   return (
     <div>
-      <h1>NC_News</h1>
+      <h1>NC News</h1>
     </div>
   );
 };

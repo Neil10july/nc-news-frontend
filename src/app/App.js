@@ -23,7 +23,7 @@ class App extends Component {
     return (
       <div>
         <div>
-          <Header user={user} loggedIn={loggedIn} />
+          <Header />
           <NavBar user={user} loggedIn={loggedIn} />
         </div>
         <Router>

@@ -39,12 +39,15 @@ class ViewComments extends Component {
         />
         <ul id="commentsList">
           {comments.map(comment => {
-            const { comment_id, votes, author, body } = comment;
+            const { comment_id, votes, author, body, created_at } = comment;
             return (
               <div key={comment_id}>
                 <div className="comment">
                   <li className="commentContent">
                     <Link to="/">{author}</Link>
+                  </li>
+                  <li className="commentContent" id="commentDate">
+                    {created_at}
                   </li>
                   <li className="commentContent">{body}</li>
                   <UpdateVotes
@@ -60,6 +63,7 @@ class ViewComments extends Component {
                   <br />
                   {this.canDelete(author) && (
                     <DeleteContent
+                      className="commentContent"
                       args={{
                         content: "comment",
                         id: comment_id,

@@ -22,8 +22,10 @@ const ArticleList = props => {
                   {article.title}
                 </Link>
               </li>
-              <li>(Topic) {article.topic}</li>
-              <li>(Author) {article.author}</li>
+              <li>Posted on - {article.created_at}</li>
+              <li>Topic - {article.topic}</li>
+              <li>Author - {article.author}</li>
+              <li>{article.votes} votes</li>
               <li>{article.comment_count} comments</li>
               <br></br>
             </div>

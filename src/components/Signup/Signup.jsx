@@ -22,44 +22,39 @@ class Signup extends Component {
       </div>
     ) : (
       <div>
-        <form id="signUpForm">
-          <label>
-            Name{" "}
-            <input
-              className="signupInput"
-              onChange={event => {
-                this.handleChange(event, "name");
-              }}
-            ></input>
-          </label>
+        <form id="signupForm">
+          <label> Create an account </label>
           <br />
-          <label>
-            username{" "}
-            <input
-              className="signupInput"
-              onChange={event => {
-                this.handleChange(event, "username");
-              }}
-            ></input>
-          </label>
+          <input
+            className="signupInput"
+            placeholder="Name"
+            onChange={event => {
+              this.handleChange(event, "name");
+            }}
+          ></input>
+          <input
+            className="signupInput"
+            placeholder="username"
+            onChange={event => {
+              this.handleChange(event, "username");
+            }}
+          ></input>
+          <input
+            className="signupInput"
+            placeholder="password"
+            onChange={event => {
+              this.handleChange(event, "password");
+            }}
+          ></input>
           <br />
-          <label>
-            password{" "}
-            <input
-              className="signupInput"
-              onChange={event => {
-                this.handleChange(event, "password");
-              }}
-            ></input>
-          </label>
           <button
+            className="submitBtn"
             onClick={event => {
               this.sendUserInput(event);
             }}
           >
             submit
           </button>
-          <br />
           {err && <p className="errText">{err}</p>}
         </form>
       </div>

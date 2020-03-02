@@ -11,28 +11,25 @@ class Login extends Component {
     return (
       <div>
         <form id="loginForm">
-          <label>
-            {" username "}
-            <input
-              className="loginInput"
-              type="text"
-              onChange={event => {
-                this.handleChange(event, "username");
-              }}
-            ></input>
-          </label>
-          <br></br>
-          <label>
-            {" password "}
-            <input
-              className="loginInput"
-              type="text"
-              onChange={event => {
-                this.handleChange(event, "password");
-              }}
-            ></input>
-          </label>
+          <input
+            className="loginInput"
+            type="text"
+            placeholder="username"
+            onChange={event => {
+              this.handleChange(event, "username");
+            }}
+          ></input>
+          <input
+            className="loginInput"
+            type="text"
+            placeholder="password"
+            onChange={event => {
+              this.handleChange(event, "password");
+            }}
+          ></input>
+          <br />
           <button
+            className="submitBtn"
             onClick={event => {
               this.validateUser(event);
             }}
@@ -40,17 +37,17 @@ class Login extends Component {
             Log in
           </button>
           {err && <p className="errText">{err}</p>}
-          <br />
-          <p>
-            {"  or  "}
+          <div>
+            or <br />
             <button
+              className="submitBtn"
               onClick={() => {
                 navigate("/signup");
               }}
             >
               Create an account
             </button>
-          </p>
+          </div>
         </form>
       </div>
     );
