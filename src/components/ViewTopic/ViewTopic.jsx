@@ -16,10 +16,10 @@ class ViewTopic extends Component {
 
   render() {
     const { err } = this.state;
-    return this.state.isLoading ? (
-      <p>Loading articles...</p>
-    ) : err ? (
+    return err ? (
       <ErrorHandler msg={err} />
+    ) : this.state.isLoading ? (
+      <p>Loading articles...</p>
     ) : (
       <div>
         <h2>{this.props.topic.toUpperCase()}</h2>

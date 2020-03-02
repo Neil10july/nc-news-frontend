@@ -27,4 +27,20 @@ const removeContent = (content, id) => {
   return axios.delete(`${url}/${content}s/${id}`);
 };
 
-export { url, fetchContent, incrementVote, postComment, removeContent };
+const createNewUser = body => {
+  return axios.post(`${url}/users`, body);
+};
+
+const checkUserCreds = creds => {
+  return axios.post(`${url}/login`, creds);
+};
+
+export {
+  url,
+  fetchContent,
+  incrementVote,
+  postComment,
+  removeContent,
+  createNewUser,
+  checkUserCreds
+};

@@ -58,7 +58,7 @@ class ViewComments extends Component {
                     }}
                   />
                   <br />
-                  {user === comment.author && (
+                  {this.canDelete(author) && (
                     <DeleteContent
                       args={{
                         content: "comment",
@@ -91,6 +91,13 @@ class ViewComments extends Component {
     api.fetchContent(path).then(({ comments }) => {
       this.setState({ comments, isLoading: false });
     });
+  };
+
+  canDelete = author => {
+    const { user } = this.props;
+    if (user === author || user === "admin") {
+      return true;
+    } else return false;
   };
 
   setPath = path => {

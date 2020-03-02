@@ -18,9 +18,14 @@ const NavBar = props => {
       {loggedIn ? (
         <h2>logged in as {user}</h2>
       ) : (
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
+        <React.Fragment>
+          <Link to="/signup">
+            <button>Sign up</button>
+          </Link>
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+        </React.Fragment>
       )}
     </nav>
   );

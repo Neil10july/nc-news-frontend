@@ -10,13 +10,13 @@ class Articles extends Component {
   state = { path: "/articles", articles: [], err: null, isLoading: true };
 
   render() {
-    const { err } = this.state;
-    return this.state.isLoading ? (
-      <p>Loading articles...</p>
-    ) : err ? (
+    const { err, isLoading } = this.state;
+    return err ? (
       <div>
         <ErrorHandler msg={err} />
       </div>
+    ) : isLoading ? (
+      <p>Loading articles...</p>
     ) : (
       <div>
         <h1>ARTICLES</h1>
@@ -54,7 +54,7 @@ class Articles extends Component {
   }
 
   setPath = path => {
-    this.setState({ path, isLoading: true });
+    this.setState({ path });
   };
 }
 

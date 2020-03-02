@@ -3,27 +3,23 @@ import { api } from "../../routes/component.routes";
 import { navigate } from "@reach/router";
 
 class AddComment extends Component {
-  state = { comment: "" };
+  state = { comment: "", err: null };
 
   render() {
-    const { comment } = this.state;
+    const { err } = this.state;
     return (
       <div>
         <form>
           <textarea
             id="commentInput"
             type="text"
-            minLength="4"
             placeholder="Add a comment"
             onChange={this.handleChange}
           ></textarea>
-          {comment.length > 3 ? (
-            <button id="commentButton" onClick={this.submitComment}>
-              COMMENT
-            </button>
-          ) : (
-            <p>comments must have a minimum of 4 characters!</p>
-          )}
+          <button id="commentButton" onClick={this.submitComment}>
+            COMMENT
+          </button>
+          {err && <p className="errText">{err}</p>}
         </form>
       </div>
     );
@@ -36,12 +32,15 @@ class AddComment extends Component {
 
   submitComment = event => {
     event.preventDefault();
+    const { user, id, loggedIn } = this.props;
+    const { comment } = this.state;
+
     if (!this.props.loggedIn) {
       navigate("/login");
+    } else if (comment.length < 4) {
+      this.setState({ err: "comments must atleast contain 4 characters!" });
     } else {
-      const { user, id, loggedIn } = this.props;
-      const { comment } = this.state;
-      if (loggedIn && comment.length > 3) {
+      if (loggedIn) {
         api.postComment(user, id, comment);
         this.props.preRenderComment(user, comment);
       }

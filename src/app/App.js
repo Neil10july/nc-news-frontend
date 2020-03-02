@@ -3,6 +3,7 @@ import { Router, navigate } from "@reach/router";
 import "./App.css";
 import {
   Header,
+  NavBar,
   Footer,
   Topics,
   ViewTopic,
@@ -10,7 +11,8 @@ import {
   ViewArticle,
   Home,
   Login,
-  ErrorHandler
+  ErrorHandler,
+  Signup
 } from "../routes/component.routes";
 
 class App extends Component {
@@ -20,9 +22,10 @@ class App extends Component {
     const { user, loggedIn } = this.state;
     return (
       <div>
-        <header>
+        <div>
           <Header user={user} loggedIn={loggedIn} />
-        </header>
+          <NavBar user={user} loggedIn={loggedIn} />
+        </div>
         <Router>
           <Home path="/" updateCurrentPath={this.updateCurrentPath} />
           <Topics path="/topics" />
@@ -40,6 +43,7 @@ class App extends Component {
             loggedIn={loggedIn}
             updateCurrentPath={this.updateCurrentPath}
           />
+          <Signup path="/signup" />
           <Login path="/login" logIn={this.logIn} />
           <ErrorHandler default msg={"404 - Page Not Found"} />
         </Router>

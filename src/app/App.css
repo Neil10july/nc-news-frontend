@@ -1,3 +1,11 @@
-* {
-  background-color: antiquewhite;
+/* .app {
+  display: grid;
+  background-color: white;
+  grid-template-columns: 1fr 6fr 1fr;
+  grid-template-areas: "leftSidebar main rightSidebar";
+} */
+
+.errText {
+  color: red;
+  font-size: 13px;
 }

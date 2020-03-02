@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "./NavBar";
 import "./Layout.css";
 
 const Header = props => {
@@ -7,7 +6,6 @@ const Header = props => {
   return (
     <div>
       <h1>NC_News</h1>
-      <NavBar user={user} loggedIn={loggedIn} />
     </div>
   );
 };

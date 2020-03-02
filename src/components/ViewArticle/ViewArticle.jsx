@@ -11,17 +11,22 @@ import {
 } from "../../routes/component.routes";
 
 class ViewArticle extends Component {
-  state = { article: "", err: null, currentVote: null, isLoading: true };
+  state = {
+    article: "",
+    err: null,
+    currentVote: null,
+    isLoading: true
+  };
 
   render() {
-    const { article, err, currentVote } = this.state;
+    const { article, err, currentVote, isLoading } = this.state;
     const { user, loggedIn, article_id } = this.props;
     const { votes, title, author, created_at, body } = article;
 
-    return this.state.isLoading ? (
-      <p>Loading article...</p>
-    ) : err ? (
+    return err ? (
       <ErrorHandler msg={err} />
+    ) : isLoading ? (
+      <p>Loading article...</p>
     ) : (
       <div>
         <h1>{title}</h1>
@@ -43,7 +48,7 @@ class ViewArticle extends Component {
             }}
           />
         </ul>
-        {user === article.author && (
+        {this.canDelete(author) && (
           <DeleteContent
             args={{
               content: "article",
@@ -96,6 +101,13 @@ class ViewArticle extends Component {
 
   preRenderDelete = () => {
     this.setState({ err: "Article deleted" });
+  };
+
+  canDelete = author => {
+    const { user } = this.props;
+    if (user === author || user === "admin") {
+      return true;
+    } else return false;
   };
 }
 
