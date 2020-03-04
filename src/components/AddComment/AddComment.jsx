@@ -46,6 +46,7 @@ class AddComment extends Component {
     } else {
       if (loggedIn) {
         api.postComment(user, id, comment);
+        this.setState({ err: null });
         this.props.preRenderComment(user, comment);
       }
     }

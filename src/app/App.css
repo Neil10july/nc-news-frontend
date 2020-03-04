@@ -292,6 +292,7 @@ input:focus {
   border-bottom: 1px solid;
   border-left: 1px solid;
   border-radius: 3px;
+  border-bottom-left-radius: 10px;
 }
 
 .commentItems {
