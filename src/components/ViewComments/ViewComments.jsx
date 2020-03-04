@@ -111,6 +111,7 @@ class ViewComments extends Component {
   preRenderComment = (author, body) => {
     const newComment = {
       author: author,
+      created_at: new Date(),
       body: body,
       votes: 0,
       comment_id: "temp"
