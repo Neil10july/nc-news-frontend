@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Router, navigate } from "@reach/router";
-import "./App.2.css";
+import "./App.css";
 import {
   Header,
   Footer,

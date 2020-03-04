@@ -1,50 +1,231 @@
-.forms {
-  display: block;
-  text-align: center;
+/* ----- GENERAL ---- */
+.app {
+  display: grid;
+  grid-row: 50px auto;
 }
 
-.head {
-  display: flex;
-  border-bottom: 1px solid black;
-  justify-content: center;
-}
-
-#header {
-  display: inline-flex;
-  align-items: flex-start;
-}
-
-.nav {
-  display: inline-flex;
-  justify-content: center;
-}
-
-#leftNav {
-  display: inline-flex;
-  align-self: center;
-}
-
-#rightNav {
-  display: inline-flex;
-  align-self: flex-end;
-}
-
-#signupForm {
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-#loginForm {
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+.content {
+  margin-top: 50px;
 }
 
 ul {
   list-style: none;
+  padding: 0;
+}
+
+.errText {
+  color: red;
+  font-size: 13px;
+}
+
+/* ---- HEADER/NAV ----- */
+
+#header {
+  display: grid;
+  grid-template-columns: 3fr 6fr;
+  grid-template-rows: 40px;
+  width: 100%;
+  position: fixed;
+  background-color: rgb(11, 39, 63);
+  align-items: center;
+  margin: 0;
+  white-space: nowrap;
+}
+
+#logo {
+  color: white;
+  justify-self: center;
+  padding-left: 1em;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.nav {
+  grid-template-columns: 1 / -1;
+  display: grid;
+  grid-template-columns: 3fr 1fr 3fr 1fr;
+  grid-template-rows: 50px;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+#leftNav {
+  display: flex;
+  grid-column: 1 / 2;
+  justify-content: space-evenly;
+}
+
+#rightNav {
+  display: flex;
+  grid-column: 3 / 4;
+  justify-content: space-evenly;
+}
+
+/* ---- BUTTONS ----- */
+
+button {
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 3px;
+  outline: none;
+  text-align: center;
+  width: 80px;
+  padding: 0.2em 0 0.2em 0;
+  margin: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.navButton {
+  color: white;
+  font-size: 14px;
+  font-weight: 550;
+  margin: 2em;
+  border: none;
+  border-radius: 3px;
+  border: 2px solid white;
+  width: 80px;
+  padding: 0.2em 0 0.2em 0;
+  transition-duration: 0.2s;
+}
+
+.navButton:hover {
+  background-color: white;
+  color: black;
+}
+
+.submitBtn {
+  display: inline-block;
+  margin: 5px;
+  transition-duration: 0.2s;
+}
+
+.submitBtn:hover {
+  color: white;
+  background-color: rgb(11, 39, 63);
+}
+
+#userBtn {
+  width: 100px;
+}
+
+#postBtn {
+  width: 100px;
+  background-color: white;
+  color: rgb(11, 39, 63);
+}
+
+#signupBtn {
+  background-color: white;
+  color: rgb(11, 39, 63);
+}
+
+#signupBtn:hover {
+  background-color: rgb(11, 39, 63);
+  color: white;
+}
+
+#loggedIn {
+  display: flex;
+  color: white;
+  align-self: center;
+}
+
+#createAccBtn {
+  width: 150px;
+}
+
+.voteBtn {
+  width: 30px;
+  border-color: black;
+  transition-duration: 0.2s;
+  margin: 0 0.5em;
+}
+
+.voteBtn:hover {
+  border-color: black;
+  background-color: rgba(12, 46, 77, 0.918);
+  transition-duration: 0.2s;
+  color: white;
+}
+
+.voted {
+  width: 30px;
+  border-color: rgb(11, 39, 63);
+  background-color: rgb(11, 39, 63);
+  color: white;
+  margin: 0 0.5em;
+}
+
+#toggleBtn {
+  width: 120px;
+}
+
+#deleteBtn {
+  width: 120px;
+  margin-bottom: 1em;
+  border-color: rgb(206, 15, 15);
+}
+
+/* ---- ALL ARTICLE LIST PAGES ------- */
+
+.articles {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-row: 1fr auto;
+  justify-content: center;
+  align-self: start;
+  white-space: nowrap;
+}
+
+#topic {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  text-align: center;
+  font-size: 20px;
+  justify-self: center;
+}
+
+#sortBy {
+  grid-column: 1 / 2;
+  grid-row: 1/ 2;
+  justify-self: center;
+  align-self: start;
+  padding-top: 50px;
+  margin: 0 20px;
+}
+
+#listTitle {
+  color: rgb(61, 1, 139);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+#articlesList {
+  color: rgba(0, 0, 0, 0.781);
+  font-size: 14px;
+  grid-column: 2 / 3;
+  justify-self: center;
+  align-content: start;
+}
+
+/* ------- FORMS ----- */
+
+#signupForm {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 8%;
+}
+
+#loginForm {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 8%;
 }
 
 input {
@@ -61,54 +242,42 @@ input:focus {
   border: 2px solid orange;
 }
 
-button {
-  background-color: transparent;
-  border: 2px solid black;
-  border-radius: 3px;
-  outline: none;
+/* ---- VIEW ARTICLE PAGE ----- */
+.viewArticle {
+  display: grid;
+  grid-template-columns: 2fr 4fr 2fr;
+  justify-self: left;
 }
 
-button:hover {
-  cursor: pointer;
+#articleContent {
+  grid-column: 2/3;
 }
 
-.navButton {
-  color: black;
-  width: 6em;
-  margin: 2em;
-  border: none;
-  border-radius: 3px;
-  border: 2px solid orange;
-  padding: 0.5em;
+#userLink {
+  color: rgb(33, 34, 99);
+  text-decoration: none;
+  margin-left: 0.7em;
 }
 
-.navButton:hover {
-  background-color: white;
+#updateVote {
+  margin-left: 0.6em;
 }
 
-.submitBtn {
-  display: inline-block;
-  margin: 5px;
-}
-
-.submitBtn:hover {
-  background-color: rgb(241, 239, 239);
-}
-
+/* ---- COMMENTS LIST ---- */
 #commentsList {
   list-style: none;
 }
 
 .comment {
-  position: relative;
-  border-color: grey;
-  border-bottom: 2px solid;
-  border-left: 2px solid;
+  border-color: rgb(11, 39, 63);
+  border-bottom: 1px solid;
+  border-left: 1px solid;
   border-radius: 3px;
 }
 
-.commentContent {
-  margin: 0.5em;
+.commentItems {
+  margin-top: 0.8em;
+  margin-left: 1.3em;
 }
 
 #commentDate {
@@ -116,7 +285,116 @@ button:hover {
   font-size: 12px;
 }
 
-.errText {
-  color: red;
+#commentContent {
+  font-size: 14px;
+  margin: 0.5em 0 0.8em 0;
+}
+
+#commentAuthor {
+  text-decoration: none;
   font-size: 13px;
+  color: rgb(33, 34, 99);
+}
+
+#commentText {
+  display: flex;
+  resize: none;
+  font-family: sans-serif;
+  font-size: 14px;
+  background-color: rgb(237, 242, 243);
+  border-radius: 0.3px;
+  margin-bottom: 0.4em;
+  width: 100%;
+  height: 75px;
+}
+
+/* ---- TOPICS PAGE ----- */
+#topicsList {
+  height: 40px;
+  line-height: 40px;
+  margin-left: 50px;
+}
+
+#codingLink {
+  margin-left: 9px;
+}
+
+.topicsButton {
+  width: 90px;
+  margin-left: 20px;
+}
+
+/* ----- MEDIA QUERIES ----- */
+@media screen and (max-width: 600px) {
+  #logo {
+    display: none;
+  }
+
+  #header {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 40px;
+    justify-content: space-evenly;
+  }
+
+  .nav {
+    display: flex;
+  }
+
+  #rightNav {
+    display: none;
+  }
+
+  .articles {
+    display: block;
+    margin: 0 0.5em;
+    white-space: normal;
+  }
+
+  #topic {
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    justify-self: center;
+  }
+
+  #sortBy {
+    margin-top: 0.5em;
+    display: block;
+    justify-self: center;
+    align-self: center;
+    padding: 0;
+  }
+
+  .viewArticle {
+    display: block;
+    margin: 0 0.5em;
+  }
+
+  #commentText {
+    width: 98%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #logo {
+    display: none;
+  }
+
+  #header {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 40px;
+    justify-content: space-evenly;
+  }
+
+  .viewArticle {
+    grid-template-columns: 2fr 13fr 2fr;
+  }
+
+  @media screen and (max-width: 800px) {
+    #loggedIn {
+      display: none;
+    }
+  }
 }
