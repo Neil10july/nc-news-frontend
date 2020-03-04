@@ -5,7 +5,7 @@ class Toggle extends Component {
   render() {
     return (
       <div>
-        <button id="toggleBtn" onClick={this.showing}>
+        <button className="submitBtn" id="toggleBtn" onClick={this.showing}>
           {this.props.text}
         </button>
         {this.state.isShowing && this.props.children}

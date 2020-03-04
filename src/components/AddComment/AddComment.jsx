@@ -16,7 +16,11 @@ class AddComment extends Component {
             placeholder="Add a comment"
             onChange={this.handleChange}
           ></textarea>
-          <button id="commentButton" onClick={this.submitComment}>
+          <button
+            className="submitBtn"
+            id="commentButton"
+            onClick={this.submitComment}
+          >
             COMMENT
           </button>
           {err && <p className="errText">{err}</p>}

@@ -161,6 +161,7 @@ button:hover {
 }
 
 #toggleBtn {
+  margin: 0;
   width: 120px;
 }
 
@@ -168,6 +169,12 @@ button:hover {
   width: 120px;
   margin-bottom: 1em;
   border-color: rgb(206, 15, 15);
+  transition-duration: 0.2s;
+}
+
+#deleteBtn:hover {
+  color: white;
+  background-color: rgb(206, 15, 15);
 }
 
 /* ---- ALL ARTICLE LIST PAGES ------- */
@@ -212,7 +219,7 @@ button:hover {
   align-content: start;
 }
 
-/* ------- FORMS ----- */
+/* ------- FORMS ------- */
 
 #signupForm {
   display: flex;
