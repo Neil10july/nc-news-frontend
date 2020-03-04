@@ -5,7 +5,7 @@ const Topics = () => {
   return (
     <div>
       <ul id="topicsList">
-        <li>
+        <li id="codingLink">
           Coding{" "}
           <Link to="/topics/coding">
             <button className="topicsButton">View articles</button>
@@ -14,7 +14,7 @@ const Topics = () => {
         <li>
           Cooking{" "}
           <Link to="/topics/cooking">
-            <button className="topicsButton">View article</button>
+            <button className="topicsButton">View articles</button>
           </Link>
         </li>
         <li>

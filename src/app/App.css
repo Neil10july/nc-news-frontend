@@ -1,5 +1,45 @@
-form {
+.forms {
+  display: block;
+  text-align: center;
+}
+
+.head {
+  display: flex;
+  border-bottom: 1px solid black;
+  justify-content: center;
+}
+
+#header {
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+.nav {
+  display: inline-flex;
+  justify-content: center;
+}
+
+#leftNav {
+  display: inline-flex;
+  align-self: center;
+}
+
+#rightNav {
+  display: inline-flex;
+  align-self: flex-end;
+}
+
+#signupForm {
   display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#loginForm {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
 }
 
@@ -33,17 +73,17 @@ button:hover {
 }
 
 .navButton {
+  color: black;
+  width: 6em;
   margin: 2em;
   border: none;
   border-radius: 3px;
-  border-bottom: 2px solid purple;
-  padding: 0em 1em 0.5em 1em;
+  border: 2px solid orange;
+  padding: 0.5em;
 }
 
 .navButton:hover {
-  border: none;
-  border-left: 2px solid purple;
-  border-right: 2px solid purple;
+  background-color: white;
 }
 
 .submitBtn {
@@ -79,7 +119,4 @@ button:hover {
 .errText {
   color: red;
   font-size: 13px;
-}
-
-@media screen and (max-height: 450px) {
 }

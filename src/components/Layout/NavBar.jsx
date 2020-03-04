@@ -5,23 +5,39 @@ import "./Layout.css";
 const NavBar = props => {
   const { user, loggedIn } = props;
   return (
-    <nav className="navbar">
-      <Link to="/">
-        <button className="navButton">Home</button>
-      </Link>
-      <Link to="/topics">
-        <button className="navButton"> Topics</button>
-      </Link>
-      <Link to="/articles">
-        <button className="navButton"> Articles</button>
-      </Link>
+    <div className="nav">
+      <nav id="leftNav">
+        <Link to="/">
+          <button className="navButton"> Home </button>
+        </Link>
+        <Link to="/topics">
+          <button className="navButton"> Topics </button>
+        </Link>
+        <Link to="/articles">
+          <button className="navButton"> Articles </button>
+        </Link>
+      </nav>
       {loggedIn ? (
-        <h2>logged in as {user}</h2>
+        <nav id="rightNav">
+          <Link to="/home">
+            <button className="navButton" id="postBtn">
+              Post article
+            </button>
+          </Link>
+          <Link to="/home">
+            <button className="navButton" id="userBtn">
+              Your articles
+            </button>
+          </Link>
+          <p id="loggedIn">
+            logged in: <span style={{ color: "orange" }}>{` ${user}`}</span>
+          </p>
+        </nav>
       ) : (
-        <React.Fragment>
+        <nav id="rightNav">
           <Link to="/signup">
             <button className="navButton" id="signupBtn">
-              Sign up
+              Signup
             </button>
           </Link>
           <Link to="/login">
@@ -29,9 +45,9 @@ const NavBar = props => {
               Login
             </button>
           </Link>
-        </React.Fragment>
+        </nav>
       )}
-    </nav>
+    </div>
   );
 };
 

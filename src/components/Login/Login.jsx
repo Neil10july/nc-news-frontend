@@ -9,45 +9,50 @@ class Login extends Component {
   render() {
     const { err } = this.state;
     return (
-      <div>
+      <div className="forms">
         <form id="loginForm">
-          <input
-            className="loginInput"
-            type="text"
-            placeholder="username"
-            onChange={event => {
-              this.handleChange(event, "username");
-            }}
-          ></input>
-          <input
-            className="loginInput"
-            type="text"
-            placeholder="password"
-            onChange={event => {
-              this.handleChange(event, "password");
-            }}
-          ></input>
-          <br />
-          <button
-            className="submitBtn"
-            onClick={event => {
-              this.validateUser(event);
-            }}
-          >
-            Log in
-          </button>
-          {err && <p className="errText">{err}</p>}
-          <div>
-            or <br />
+          <label>
+            Login
+            <br />
+            <input
+              className="loginInput"
+              type="text"
+              placeholder="username"
+              onChange={event => {
+                this.handleChange(event, "username");
+              }}
+            ></input>
+            <input
+              className="loginInput"
+              type="text"
+              placeholder="password"
+              onChange={event => {
+                this.handleChange(event, "password");
+              }}
+            ></input>
+            <br />
             <button
               className="submitBtn"
-              onClick={() => {
-                navigate("/signup");
+              onClick={event => {
+                this.validateUser(event);
               }}
             >
-              Create an account
+              Log in
             </button>
-          </div>
+            {err && <p className="errText">{err}</p>}
+            <div>
+              or <br />
+              <button
+                id="createAccBtn"
+                className="submitBtn"
+                onClick={() => {
+                  navigate("/signup");
+                }}
+              >
+                Create an account
+              </button>
+            </div>
+          </label>
         </form>
       </div>
     );

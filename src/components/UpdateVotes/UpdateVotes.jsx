@@ -16,9 +16,9 @@ class UpdateVotes extends Component {
       loggedIn
     } = this.props.args;
     return (
-      <div>
+      <div id="updateVote">
         <button
-          id={this.state.vote === "upvote" ? "upvote" : "button"}
+          className={this.state.vote === "upvote" ? "voted" : "voteBtn"}
           onClick={event => {
             if (loggedIn) {
               this.amendVotes(
@@ -37,7 +37,7 @@ class UpdateVotes extends Component {
         </button>{" "}
         {votes}{" "}
         <button
-          id={this.state.vote === "downvote" ? "downvote" : "button"}
+          className={this.state.vote === "downvote" ? "voted" : "voteBtn"}
           onClick={event => {
             if (loggedIn) {
               this.amendVotes(

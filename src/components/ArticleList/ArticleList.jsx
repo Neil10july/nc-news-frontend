@@ -1,19 +1,22 @@
 import React from "react";
 import "./ArticleList.css";
 import { Link } from "@reach/router";
+import { SortBy } from "../../routes/component.routes";
 
 const ArticleList = props => {
-  const { articles, updateCurrentPath } = props;
-
+  const { articles, updateCurrentPath, topic, setPath } = props;
   return (
-    <div>
+    <div className="articles">
+      <h1 id="topic">{topic}</h1>
+      <SortBy setPath={setPath} content={"articles"} />
       <ul id="articlesList">
         {articles.map(article => {
+          const date = `${new Date(article.created_at)}`.slice(0, 21);
           return (
             <div key={article.article_id}>
               <li>
                 <Link
-                  id="title"
+                  id="listTitle"
                   onClick={() => {
                     updateCurrentPath(`/articles/${article.article_id}`);
                   }}
@@ -22,12 +25,13 @@ const ArticleList = props => {
                   {article.title}
                 </Link>
               </li>
-              <li>Posted on - {article.created_at}</li>
-              <li>Topic - {article.topic}</li>
-              <li>Author - {article.author}</li>
-              <li>{article.votes} votes</li>
-              <li>{article.comment_count} comments</li>
-              <br></br>
+              <li>Posted · {date}</li>
+              <li>Topic · {article.topic}</li>
+              <li>By · {article.author}</li>
+              <li>
+                {article.votes} Votes · {article.comment_count} Comments
+              </li>
+              <br />
             </div>
           );
         })}

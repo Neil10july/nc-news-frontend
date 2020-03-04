@@ -21,41 +21,44 @@ class Signup extends Component {
         </button>
       </div>
     ) : (
-      <div>
+      <div className="forms">
         <form id="signupForm">
-          <label> Create an account </label>
-          <br />
-          <input
-            className="signupInput"
-            placeholder="Name"
-            onChange={event => {
-              this.handleChange(event, "name");
-            }}
-          ></input>
-          <input
-            className="signupInput"
-            placeholder="username"
-            onChange={event => {
-              this.handleChange(event, "username");
-            }}
-          ></input>
-          <input
-            className="signupInput"
-            placeholder="password"
-            onChange={event => {
-              this.handleChange(event, "password");
-            }}
-          ></input>
-          <br />
-          <button
-            className="submitBtn"
-            onClick={event => {
-              this.sendUserInput(event);
-            }}
-          >
-            submit
-          </button>
-          {err && <p className="errText">{err}</p>}
+          <label>
+            {" "}
+            Create an account
+            <br />
+            <input
+              className="signupInput"
+              placeholder="Name"
+              onChange={event => {
+                this.handleChange(event, "name");
+              }}
+            ></input>
+            <input
+              className="signupInput"
+              placeholder="username"
+              onChange={event => {
+                this.handleChange(event, "username");
+              }}
+            ></input>
+            <input
+              className="signupInput"
+              placeholder="password"
+              onChange={event => {
+                this.handleChange(event, "password");
+              }}
+            ></input>
+            <br />
+            <button
+              className="submitBtn"
+              onClick={event => {
+                this.sendUserInput(event);
+              }}
+            >
+              submit
+            </button>
+            {err && <p className="errText">{err}</p>}
+          </label>
         </form>
       </div>
     );

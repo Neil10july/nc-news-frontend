@@ -25,7 +25,7 @@ const SortBy = props => {
   };
 
   return (
-    <div>
+    <div id="sortBy">
       <label>Sort by</label>{" "}
       <select
         onChange={event => {

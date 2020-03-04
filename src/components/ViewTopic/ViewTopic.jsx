@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-import {
-  ArticleList,
-  api,
-  SortBy,
-  ErrorHandler
-} from "../../routes/component.routes";
+import { ArticleList, api, ErrorHandler } from "../../routes/component.routes";
 
 class ViewTopic extends Component {
   state = {
@@ -22,11 +17,11 @@ class ViewTopic extends Component {
       <p>Loading articles...</p>
     ) : (
       <div>
-        <h2>{this.props.topic.toUpperCase()}</h2>
-        <SortBy setPath={this.setPath} content={"articles"} />
         <ArticleList
           articles={this.state.articles}
           updateCurrentPath={this.props.updateCurrentPath}
+          topic={this.props.topic.toUpperCase()}
+          setPath={this.setPath}
         />
       </div>
     );

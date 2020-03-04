@@ -11,7 +11,7 @@ class AddComment extends Component {
       <div>
         <form>
           <textarea
-            id="commentInput"
+            id="commentText"
             type="text"
             placeholder="Add a comment"
             onChange={this.handleChange}
@@ -38,7 +38,7 @@ class AddComment extends Component {
     if (!this.props.loggedIn) {
       navigate("/login");
     } else if (comment.length < 4) {
-      this.setState({ err: "comments must atleast contain 4 characters!" });
+      this.setState({ err: "comments must contain  atleast 4 characters!" });
     } else {
       if (loggedIn) {
         api.postComment(user, id, comment);

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Router, navigate } from "@reach/router";
-import "./App.css";
+import "./App.2.css";
 import {
   Header,
-  NavBar,
   Footer,
   Topics,
   ViewTopic,
@@ -21,12 +20,11 @@ class App extends Component {
   render() {
     const { user, loggedIn } = this.state;
     return (
-      <div>
+      <div className="app">
         <div>
-          <Header />
-          <NavBar user={user} loggedIn={loggedIn} />
+          <Header user={user} loggedIn={loggedIn} />
         </div>
-        <Router>
+        <Router className="content">
           <Home path="/" updateCurrentPath={this.updateCurrentPath} />
           <Topics path="/topics" />
           <ViewTopic
@@ -45,7 +43,12 @@ class App extends Component {
           />
           <Signup path="/signup" />
           <Login path="/login" logIn={this.logIn} />
-          <ErrorHandler default msg={"404 - Page Not Found"} />
+          <ErrorHandler
+            default
+            msg={
+              "Ah, you weren't supposed to click that - Page under construction"
+            }
+          />
         </Router>
         <Footer />
       </div>

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {
   ArticleList,
   api,
-  SortBy,
   ErrorHandler
 } from "../../../routes/component.routes";
 
@@ -19,11 +18,11 @@ class Articles extends Component {
       <p>Loading articles...</p>
     ) : (
       <div>
-        <h1>ARTICLES</h1>
-        <SortBy setPath={this.setPath} content={"articles"} />
         <ArticleList
           articles={this.state.articles}
           updateCurrentPath={this.props.updateCurrentPath}
+          topic="ARTICLES"
+          setPath={this.setPath}
         />
       </div>
     );

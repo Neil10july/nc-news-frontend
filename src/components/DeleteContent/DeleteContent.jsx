@@ -8,7 +8,11 @@ const DeleteContent = props => {
     preRenderDelete(id);
   };
 
-  return <button onClick={eraseContent}>Delete {content}</button>;
+  return (
+    <button id="deleteBtn" onClick={eraseContent}>
+      Delete {content}
+    </button>
+  );
 };
 
 export default DeleteContent;
