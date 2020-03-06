@@ -13,7 +13,7 @@ const ArticleList = props => {
         {articles.map(article => {
           const date = `${new Date(article.created_at)}`.slice(0, 21);
           return (
-            <div key={article.article_id}>
+            <div className="articlesContent" key={article.article_id}>
               <li>
                 <Link
                   id="listTitle"
