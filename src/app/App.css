@@ -231,7 +231,7 @@ button:hover {
 
 .articlesContent {
   border-bottom: 2px solid rgb(11, 39, 63);
-  border-left: 1px solid rgb(11, 39, 63);
+  border-left: 1px solid grey;
   border-bottom-left-radius: 8px;
   border-top-left-radius: 3px;
   padding-bottom: 0;
